@@ -1600,8 +1600,60 @@ h3 {
   word-spacing: 20px;
 }
 
+/* Join Now Slider */
+.join-now-slider {
+    width: 100%;
+    overflow: hidden;
+    padding: 5px 0;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.join-now-track {
+    display: inline-flex;
+    white-space: nowrap;
+    position: relative;
+    will-change: transform;
+    animation: slideText 20s linear infinite;
+}
+
+.join-now-track span {
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    color: #ff5e14;
+    margin: 0 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    flex-shrink: 0;
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+@keyframes slideText {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Duplicate content for seamless loop */
+.join-now-track::after {
+    content: 'JOIN NOW > JOIN NOW > JOIN NOW > JOIN NOW > JOIN NOW > JOIN NOW > JOIN NOW > JOIN NOW > JOIN NOW > JOIN NOW > ';
+    white-space: nowrap;
+    display: inline-block;
+    margin-left: 15px;
+    color: #ff5e14;
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
 .event-details {
-    padding: 40px 0;
+    padding: 20px 0 40px 0;
     background: #010101;
     text-align: center;
 }
@@ -6147,4 +6199,104 @@ h6 {
     }
 }
 
-/*# sourceMappingURL=style.css.map */
+/* Team Slider - Matches Highlights Style */
+.team-slider-container {
+    position: relative;
+    width: 100vw;
+    height: 600px;
+    overflow: hidden;
+    margin: 0;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 5px 0 15px 0;
+    background: #000;
+}
+
+.team-slider-track {
+    display: flex;
+    height: 100%;
+    width: max-content;
+    animation: slide 80s linear infinite;
+    gap: 12px;
+    padding: 0 20px;
+    will-change: transform;
+    box-sizing: border-box;
+}
+
+.team-slide {
+    width: calc(100vw - 40px);
+    height: calc(100% - 20px);
+    margin: 10px 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Feather overlay for the edges */
+.feather-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.feather-left {
+    left: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, transparent 100%);
+}
+
+.feather-right {
+    right: 0;
+    background: linear-gradient(to left, rgba(0,0,0,0.9) 0%, transparent 100%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1600px) {
+    .team-slider-container {
+        height: 550px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .team-slider-container {
+        height: 500px;
+    }
+}
+
+@media (max-width: 991px) {
+    .team-slider-container {
+        height: 450px;
+    }
+}
+
+@media (max-width: 767px) {
+    .team-slider-container {
+        height: 400px;
+    }
+}
+
+@media (max-width: 575px) {
+    .team-slider-container {
+        height: 350px;
+    }
+    .feather-overlay {
+        width: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-slider-container {
+        height: 300px;
+    }
+}
+
+/*# sourceMappingURL=style.css */
