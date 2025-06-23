@@ -1,3 +1,20 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://web3project.online/sitemap.xml
+
+# Crawl-delay: 10
+
+# Disallow admin and other private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+
+# Allow all other files
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
 Sitemap: https://youreventconwebsite.com/sitemap.xml
