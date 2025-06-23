@@ -131,11 +131,47 @@ if(brand_active.length){
   // wow js
   new WOW().init();
 
-  // counter 
-  $('.counter').counterUp({
-    delay: 10,
-    time: 10000
+  // counter animation
+  function animateCounter() {
+    $('.counter').each(function () {
+      var $this = $(this);
+      var countTo = $this.attr('data-count');
+      
+      $({ countNum: 0 }).animate({
+        countNum: countTo
+      },
+      {
+        duration: 2000,
+        easing: 'swing',
+        step: function() {
+          var num = Math.floor(this.countNum);
+          $this.text(num.toLocaleString());
+        },
+        complete: function() {
+          $this.text(countTo.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        }
+      });
+    });
+  }
+
+  // Initialize counter animation when scrolled to
+  var counterAnimated = false;
+  $(window).scroll(function() {
+    var oTop = $('.counter_area').offset().top - window.innerHeight;
+    if (!counterAnimated && $(window).scrollTop() > oTop) {
+      animateCounter();
+      counterAnimated = true;
+    }
   });
+
+  // Also trigger on page load if counter is already in view
+  if ($('.counter_area').is(':visible')) {
+    var oTop = $('.counter_area').offset().top - window.innerHeight;
+    if ($(window).scrollTop() > oTop) {
+      animateCounter();
+      counterAnimated = true;
+    }
+  }
 
 /* magnificPopup img view */
 $('.popup-image').magnificPopup({
